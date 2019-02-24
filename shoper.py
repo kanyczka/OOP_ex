@@ -1,5 +1,4 @@
 class Product():
-
     product_list = {}
 
     def check_code(code):
@@ -26,8 +25,7 @@ class Product():
     def __repr__(self):
         return self.__code + ' - ' + self.name + ' - ' + str(self.price)
 
-
-    @classmethod            # jaka jest różnica między staticmethod a classmethod
+    @classmethod  # jaka jest różnica między staticmethod a classmethod
     def show_codes(cls):
         return Product.product_list.keys()
 
@@ -50,7 +48,6 @@ class Shop():
     def __str__(self):
         return f"Shop's name: {self.name}\n"
 
-
     def add_product(self, product, quantity):
         self.product = product
         self.quantity = quantity
@@ -59,7 +56,6 @@ class Shop():
         else:
             raise KeyError(f"{self.product} already in the {self.name} shop!")
 
-
     def change_quantity(self, product, quantity):
         self.product = product
         self.quantity = quantity
@@ -67,7 +63,6 @@ class Shop():
             self.products_in_shop[self.product] = self.quantity
         else:
             print("Brak takiego produktu w sklepie!")
-
 
     def show_products_list(self):
         for self.product, self.quantity in self.products_in_shop.items():
@@ -79,15 +74,27 @@ class Shop():
         print(f"{self.product}, {self.quantity} szt")
 
 
+class Cart():
 
+    def __init__(self, capacity=15.00):
+        self.products = {}
+        self.capacity = capacity
+        self.total_capacity = 0
 
+    def add_product(self, product):
+        self.product = product
+        self.total_capacity += self.product.weight
+        self.count = 1
+        if self.total_capacity > self.capacity:
+            raise ValueError("Not sufficient cart capacity")
+        else:
+            if product in self.products:
+                # self.count += 1
+                self.products[self.product] = self.count + 1
+            else:
+                self.products[self.product] = self.count
 
-
-
-
-
-
-
-
-
-
+    def show_cart(self):
+        for product, count in self.products.items():
+            print(product, count)
+        print(self.total_capacity)
