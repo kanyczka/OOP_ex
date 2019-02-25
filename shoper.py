@@ -80,19 +80,36 @@ class Cart():
         self.products = {}
         self.capacity = capacity
         self.total_capacity = 0
-
-    def add_product(self, product):
-        self.product = product
-        self.total_capacity += self.product.weight
         self.count = 1
-        if self.total_capacity > self.capacity:
-            raise ValueError("Not sufficient cart capacity")
-        else:
-            if product in self.products:
-                # self.count += 1
-                self.products[self.product] = self.count + 1
+
+    def add_products(self, *args):
+        self.new_products = args
+        for self.product in self.new_products:
+            new_total_capacity = self.total_capacity + self.product.weight
+            if new_total_capacity > self.capacity:
+                raise ValueError("Not sufficient cart capacity")
             else:
-                self.products[self.product] = self.count
+                self.total_capacity = new_total_capacity
+                if self.product in self.products:
+                    self.products[self.product] += 1
+                else:
+                    self.products[self.product] = self.count
+
+
+
+
+    # def add_product(self, product):
+    #     self.product = product
+    #     self.total_capacity += self.product.weight
+    #     self.count = 1
+    #     if self.total_capacity > self.capacity:
+    #         raise ValueError("Not sufficient cart capacity")
+    #     else:
+    #         if product in self.products:
+    #             # self.count += 1
+    #             self.products[self.product] = self.count + 1
+    #         else:
+    #             self.products[self.product] = self.count
 
     def show_cart(self):
         for product, count in self.products.items():
