@@ -1,34 +1,8 @@
-from shoper import Product, Shop
+from shoper import Product, Shop, Cart
+from shoper_func import *
 
 
 def main():
-
-    def go_on():
-        input("======= Enter - kontynuacja programu =========")
-
-    def create_product(p):
-        el_gener = (i for i in p)
-        try:
-            Product(next(el_gener), next(el_gener), next(el_gener), next(el_gener))
-        except ValueError as err:
-            print(err.args[0], '\n')
-        except KeyError as err:
-            print(err.args[0], '\n')
-        else:
-            print("Produkt dodano!\n")
-        finally:
-            print(Product.show_products())
-
-    def add_products_to_shop(shop, p, quantity):
-        try:
-            shop.add_product(p, quantity)
-        except KeyError as err:
-            print(err.args[0], '\n')
-        else:
-            print("\nDodano produkt\n")
-
-    # ---------------------------------------------
-
     print("\n1. Tworzę kilka produktów... \n")
     p1 = Product("tv_sam_s23", "Samsung S23 tv set", 1000.00, 3.00)
     p2 = Product("phone_lgv30", "Smartphone LG V30", 3000.00, 0.2)
@@ -87,11 +61,16 @@ def main():
     new_shop.change_quantity(product, new_quantity)
     print("\nAktualna lista produktów w sklepie: ")
     new_shop.show_products_list()
+    go_on()
 
-
-
+    # Utworzenie koszyka
+    print("\nNowy koszyk. Dodajemy produkty.\n")
+    cart_1 = Cart(9.00)
+    add_products_to_cart(cart_1, p1, p2)
+    add_products_to_cart(cart_1, p2, p3, p1)
+    add_products_to_cart(cart_1, p2)
+    go_on()
 
 
 if __name__ == "__main__":
     main()
-

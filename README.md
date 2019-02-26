@@ -22,9 +22,10 @@ products (produkty) -> lista produktów
 capacity -> liczba reprezentująca maksymalną ładowność wózka
 METODY:
 add_product -> metoda powinna przyjmować w argumencie obiekt typu 'Product', i dodawać go do listy produktów. Jeżeli produktu o takim samym kodzie (pole 'code') nie było wcześniej na liście, to do dodawanego na listę produktu powinniśmy dodać nowe pole liczbowe 'count' o wartości 1. Jeżeli jednak produkt o takim samym kodzie już istniał to powinniśmy zwiększyć wartość atrybutu 'count' o 1.
-UWAGA. Podczas dodawania produktu należy sprawdzać czy sumaryczna waga wszytkich produktów nie przekracza wartości w polu 'capacity' wózka. Jeżeli przekracza to powinniśmy rzucić odpowiedni wyjątek.
-
+UWAGA. Podczas dodawania produktu należy sprawdzać czy sumaryczna waga wszytkich produktów nie przekracza wartości w polu 'capacity' wózka. Jeżeli przekracza to powinniśmy rzucić odpowiedni wyjątek. 
 remove_product -> metoda powinna móc przyjąć albo kod produktu, albo obiekt typu 'Product' i w obu przypadkach powinna zadziałać. Jeżeli produktu nie było na liście to powinna zwrócić False, jeżeli produkt był na liście to powinna go z listy usunąć, tzn. zmniejszyć wartość atrybutu 'count' o 1, natomiast gdyby po zmniejszeniu wartość 'count' była równa 0, to należy ten produkt kompletnie usunąć z listy, a następnie zwrócić True.
+
+
 
 
 6. Stwórz klasę 'DebitCard', której obiekty powinny mieć:

@@ -32,10 +32,10 @@ class Product():
     @staticmethod
     def show_products():
         print(f"Lista utworzonych produktów (pozycji: {len(Product.product_list)})")
-        no = 1
+        no = 0
         for code, product in Product.product_list.items():
-            print(f"{no}, {code}, {product}")
             no += 1
+            print(f"{no}, {code}, {product}")
 
 
 class Shop():
@@ -98,18 +98,6 @@ class Cart():
 
 
 
-    # def add_product(self, product):
-    #     self.product = product
-    #     self.total_capacity += self.product.weight
-    #     self.count = 1
-    #     if self.total_capacity > self.capacity:
-    #         raise ValueError("Not sufficient cart capacity")
-    #     else:
-    #         if product in self.products:
-    #             # self.count += 1
-    #             self.products[self.product] = self.count + 1
-    #         else:
-    #             self.products[self.product] = self.count
 
     def show_cart(self):
         for product, count in self.products.items():
