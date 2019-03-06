@@ -95,11 +95,20 @@ class Cart():
                 else:
                     self.products[self.product] = self.count
 
-
-
-
+    def remove_product(self, product):
+        if isinstance(product, str):
+            self.product = Product.product_list[product]
+        elif isinstance(product, Product):
+            self.product = product
+        if self.product in self.products:
+            self.products[self.product] -= 1
+            if self.count <= 0:
+                self.products.pop(self.product)
+            return True
+        else:
+            return False
 
     def show_cart(self):
         for product, count in self.products.items():
             print(product, count)
-        print(self.total_capacity)
+        print(round(self.total_capacity, 3))
