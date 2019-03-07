@@ -25,7 +25,7 @@ class Product():
     def __repr__(self):
         return self.__code + ' - ' + self.name + ' - ' + str(self.price)
 
-    @classmethod  # jaka jest różnica między staticmethod a classmethod
+    @classmethod
     def show_codes(cls):
         return Product.product_list.keys()
 
